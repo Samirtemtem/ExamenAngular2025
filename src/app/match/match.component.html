@@ -1,0 +1,46 @@
+<form [formGroup]="fg">
+    <label>Date</label>
+    <input type="date" formControlName="date">
+    <div class="error-message" *ngIf="fg.get('date')?.touched && fg.get('date')?.errors">
+        {{ getErrorMessage('date') }}
+    </div>
+
+    <label>Heure</label>
+    <input type="time" formControlName="heure">
+    <div class="error-message" *ngIf="fg.get('heure')?.touched && fg.get('heure')?.errors">
+        {{ getErrorMessage('heure') }}
+    </div>
+
+    <label>Lieu</label>
+    <input type="text" formControlName="lieu">
+    <div class="error-message" *ngIf="fg.get('lieu')?.touched && fg.get('lieu')?.errors">
+        {{ getErrorMessage('lieu') }}
+    </div>
+
+    <label>Equipe A</label>
+    <select formControlName="EquipeA">
+        <option *ngFor="let equipe of equipes" [value]="equipe.id">{{ equipe.nom }}</option>
+    </select>
+    <div class="error-message" *ngIf="fg.get('EquipeA')?.touched && fg.get('EquipeA')?.errors">
+        {{ getErrorMessage('EquipeA') }}
+    </div>
+
+    <label>Equipe B</label>
+    <select formControlName="EquipeB">
+        <option *ngFor="let equipe of equipes" [value]="equipe.id">{{ equipe.nom }}</option>
+    </select>
+    <div class="error-message" *ngIf="fg.get('EquipeB')?.touched && fg.get('EquipeB')?.errors">
+        {{ getErrorMessage('EquipeB') }}
+    </div>
+
+    <input type="submit" value="Soumettre" [disabled]="fg.invalid" (click)="addMatch(fg.value)">
+</form>
+
+<style>
+.error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+</style>

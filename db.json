@@ -1,0 +1,41 @@
+{
+  "equipes": [
+    {
+      "id": "1",
+      "nom": "Equipe 1",
+      "natif": "Senior"
+    },
+    {
+      "id": "2",
+      "nom": "Equipe 2",
+      "natif": "Senior"
+    },
+    {
+      "id": "3",
+      "nom": "Equipe 3",
+      "natif": "Equipe 3"
+    }
+  ],
+  "matchs": [
+    {
+      "id": "23be",
+      "EquipeA": {
+        "id": "1",
+        "nom": "Equipe 1",
+        "natif": "Senior"
+      },
+      "EquipeB": {
+        "id": "2",
+        "nom": "Equipe 2",
+        "natif": "Senior"
+      },
+      "score": {
+        "EquipeA": 3,
+        "EquipeB": 4
+      },
+      "date": "2001-01-01",
+      "heure": "00:31",
+      "lieu": "156165161"
+    }
+  ]
+}

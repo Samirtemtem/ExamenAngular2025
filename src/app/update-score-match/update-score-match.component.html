@@ -1,0 +1,92 @@
+<div class="update-score-container" *ngIf="match">
+  <h2>Modifier le Score</h2>
+  <div class="match-info">
+    <p>Match: {{match.EquipeA.nom}} vs {{match.EquipeB.nom}}</p>
+    <p>Date: {{match.date}} à {{match.heure}}</p>
+    <p>Lieu: {{match.lieu}}</p>
+  </div>
+
+  <form [formGroup]="scoreForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="scoreEquipeA">Score {{match.EquipeA.nom}}</label>
+      <input type="number" id="scoreEquipeA" formControlName="scoreEquipeA" min="0">
+      <div class="error-message" *ngIf="hasError('scoreEquipeA', 'required') || hasError('scoreEquipeA', 'min')">
+        {{ getErrorMessage('scoreEquipeA') }}
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="scoreEquipeB">Score {{match.EquipeB.nom}}</label>
+      <input type="number" id="scoreEquipeB" formControlName="scoreEquipeB" min="0">
+      <div class="error-message" *ngIf="hasError('scoreEquipeB', 'required') || hasError('scoreEquipeB', 'min')">
+        {{ getErrorMessage('scoreEquipeB') }}
+      </div>
+    </div>
+
+    <div class="buttons">
+      <button type="submit" [disabled]="scoreForm.invalid">Enregistrer</button>
+    </div>
+  </form>
+</div>
+
+<style>
+.update-score-container {
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: white;
+}
+
+.match-info {
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #f8f9fa;
+  border-radius: 4px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.error-message {
+  color: #dc3545;
+  font-size: 0.875rem;
+  margin-top: 5px;
+}
+
+.buttons {
+  margin-top: 20px;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+button:not(:disabled):hover {
+  background-color: #218838;
+}
+</style>
